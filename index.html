@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The design skill stack for the ACA course.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🎨</text></svg>">
+<title>Design Skills Pack</title>
+<style>
+  :root {
+    --bg: #f3f5f4;
+    --surface: #ffffff;
+    --ink: #16201e;
+    --muted: #5a6b67;
+    --line: #dde4e2;
+    --faint: #eaf0ee;
+    --accent: #0f766e;
+    --on-accent: #ffffff;
+    --shadow: 0 1px 2px rgba(16,32,30,.05), 0 8px 24px rgba(16,32,30,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1413; --surface: #151d1b; --ink: #eaf1ef; --muted: #92a6a1;
+      --line: #263331; --faint: #172120; --accent: #2dd4bf; --on-accent: #08110f;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1413; --surface: #151d1b; --ink: #eaf1ef; --muted: #92a6a1;
+    --line: #263331; --faint: #172120; --accent: #2dd4bf; --on-accent: #08110f;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.55; -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 52px 22px 72px; }
+
+  header { margin-bottom: 40px; }
+  .kicker {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin: 0 0 12px;
+  }
+  h1 {
+    font-size: clamp(30px, 6vw, 44px); line-height: 1.05; margin: 0 0 14px;
+    font-weight: 750; letter-spacing: -.02em; text-wrap: balance;
+  }
+  .lede { margin: 0; color: var(--muted); font-size: 16px; max-width: 60ch; }
+  .lede b { color: var(--ink); font-weight: 600; }
+
+  h2 {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600;
+    margin: 52px 0 18px; padding-bottom: 9px; border-bottom: 1px solid var(--line);
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  h2 .n { color: var(--accent); }
+
+  .grid { display: flex; flex-direction: column; gap: 10px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 18px; box-shadow: var(--shadow);
+  }
+  .card .top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+  .id { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 14.5px; font-weight: 650; color: var(--ink); }
+  .badge {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 100px; font-weight: 600; white-space: nowrap;
+    background: var(--faint); color: var(--accent); border: 1px solid var(--line);
+  }
+  .what { font-weight: 650; font-size: 15px; margin: 0 0 3px; }
+  .when { margin: 0; color: var(--muted); font-size: 14px; }
+
+  .pipe { display: flex; flex-direction: column; gap: 2px; }
+  .step {
+    display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start;
+    padding: 12px 14px; background: var(--surface); border: 1px solid var(--line);
+  }
+  .step:first-child { border-radius: 10px 10px 0 0; }
+  .step:last-child { border-radius: 0 0 10px 10px; }
+  .step .idx { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-weight: 700; color: var(--accent); font-size: 14px; padding-top: 1px; }
+  .step .body { font-size: 14.5px; }
+  .step .body b { font-weight: 650; }
+  .step .via { color: var(--muted); font-size: 12.5px; }
+  .step .via .mono { color: var(--ink); }
+
+  .links { display: flex; flex-direction: column; gap: 8px; }
+  a.row {
+    display: flex; align-items: baseline; gap: 12px; text-decoration: none; color: inherit;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 13px 16px; transition: border-color .15s ease, transform .15s ease;
+  }
+  a.row:hover { border-color: var(--accent); transform: translateY(-1px); }
+  a.row:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  a.row .rid { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13.5px; font-weight: 650; }
+  a.row .rd { color: var(--muted); font-size: 13.5px; }
+  a.row .arr { margin-left: auto; color: var(--accent); font-weight: 700; }
+
+  .foot { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+  .foot b { color: var(--ink); }
+  @media (prefers-reduced-motion: reduce) { a.row { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="kicker">Design skills // for the course</p>
+    <h1>The design skill stack.</h1>
+    <p class="lede">Seven skills that take an interface from brief to shipped, and the workflow that chains them. A working stack, built on the best open-source design skills. This page is what you can lift for your own setup.</p>
+  </header>
+
+  <h2><span class="n">01</span> The skills</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="top"><span class="id">impeccable-design</span><span class="badge">Visual</span></div>
+      <p class="what">The visual rulebook.</p>
+      <p class="when">Reach for it on any UI work: type, color, spatial rhythm, UX writing, and the anti-slop rules that stop output from reading as AI-generated.</p>
+    </div>
+    <div class="card">
+      <div class="top"><span class="id">frontend-craft</span><span class="badge">Code</span></div>
+      <p class="what">Code-level craft.</p>
+      <p class="when">When you are building the interface: interaction checklists, which modern CSS is production-safe, and component architecture (Radix, Base UI, shadcn).</p>
+    </div>
+    <div class="card">
+      <div class="top"><span class="id">emil-design-eng</span><span class="badge">Motion</span></div>
+      <p class="what">Motion and interaction feel.</p>
+      <p class="when">When deciding whether and how to animate: easing, timing, springs, gestures, and making motion feel premium instead of decorative. Based on Emil Kowalski's work.</p>
+    </div>
+    <div class="card">
+      <div class="top"><span class="id">review-animations</span><span class="badge">Motion QA</span></div>
+      <p class="what">Adversarial motion audit.</p>
+      <p class="when">Run it once motion is built. The stance is that approval is earned, not assumed.</p>
+    </div>
+    <div class="card">
+      <div class="top"><span class="id">design-tokens</span><span class="badge">Color</span></div>
+      <p class="what">Color and token system.</p>
+      <p class="when">When setting up a palette: OKLCH scales in the W3C DTCG standard, exported to CSS variables, Tailwind, and JS. Steers you off the 2026 cream and AI-purple defaults.</p>
+    </div>
+    <div class="card">
+      <div class="top"><span class="id">accessibility-audit</span><span class="badge">A11y</span></div>
+      <p class="what">The accessibility gate.</p>
+      <p class="when">Before shipping: WCAG 2.2 AA, the European Accessibility Act, APCA contrast, keyboard and screen-reader checks, each with a concrete fix.</p>
+    </div>
+    <div class="card">
+      <div class="top"><span class="id">ui-judge</span><span class="badge">Judge</span></div>
+      <p class="what">The design judge.</p>
+      <p class="when">To score a built UI: a deterministic anti-slop check plus an LLM vision judge, where the deterministic result binds the final verdict.</p>
+    </div>
+  </div>
+
+  <h2><span class="n">02</span> How they compose: brief to shipped</h2>
+  <div class="pipe">
+    <div class="step"><span class="idx">1</span><div class="body"><b>Brief, 3 Dials, slop test.</b> <span class="via">Set audience, tone, and the variance / motion / density dials. <span class="mono">impeccable-design</span></span></div></div>
+    <div class="step"><span class="idx">2</span><div class="body"><b>Tokens.</b> <span class="via">OKLCH palette, avoid cream and purple. <span class="mono">design-tokens</span></span></div></div>
+    <div class="step"><span class="idx">3</span><div class="body"><b>Build.</b> <span class="via">Visual, craft, and motion together. <span class="mono">impeccable-design + frontend-craft + emil-design-eng</span></span></div></div>
+    <div class="step"><span class="idx">4</span><div class="body"><b>Evaluate (free, always).</b> <span class="via">A deterministic anti-slop check, axe WCAG 2.2 AA, and a motion review. <span class="mono">review-animations</span></span></div></div>
+    <div class="step"><span class="idx">5</span><div class="body"><b>Judge (optional).</b> <span class="via">A vision pass that scores the result. <span class="mono">ui-judge</span></span></div></div>
+  </div>
+
+  <h2><span class="n">03</span> Open-source pieces you can install</h2>
+  <div class="links">
+    <a class="row" href="https://github.com/pbakaus/impeccable"><span class="rid">pbakaus/impeccable</span><span class="rd">A rule-based anti-slop detector, git hooks, and a command set.</span><span class="arr">→</span></a>
+    <a class="row" href="https://github.com/leonxlnx/taste-skill"><span class="rid">leonxlnx/taste-skill</span><span class="rd">Anti-slop framework, brief-to-package routing, production tells.</span><span class="arr">→</span></a>
+    <a class="row" href="https://github.com/emilkowalski/skills"><span class="rid">emilkowalski/skills</span><span class="rd">The motion skills. See also animations.dev.</span><span class="arr">→</span></a>
+  </div>
+
+  <p class="foot">These skills build on the open-source work in section 03, which is the fastest way to adopt the same stack yourself. The rest of the setup is a working system, not a public package.</p>
+</div>
+</body>
+</html>
